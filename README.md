@@ -51,4 +51,4 @@ npm start
 
 ## [Code Sandbox Link Lab 26](https://codesandbox.io/s/summer-silence-dnfdpo?file=/src/app.js)
 
-## [Code Sandbox Link Lab 27](https://codesandbox.io/s/eloquent-sanderson-zpltez)
+## [Code Sandbox Link Lab 27](https://codesandbox.io/s/heuristic-mccarthy-tfk1qu)
