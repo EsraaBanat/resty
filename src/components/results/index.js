@@ -4,7 +4,7 @@ import './result.scss'
 function Results(props) {
   console.log(props.result);
     return (
-      <section>
+      <section data-testid='results'>
         <pre>{props.result ? JSON.stringify(props.result, undefined, 2) : null}</pre>
       </section>
     );

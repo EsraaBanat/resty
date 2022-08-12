@@ -41,16 +41,16 @@ function Form(props) {
             <form onSubmit={handleSubmit}>
                 <label className="methods">
                     <select onChange={textArea} id="methods">
-                        <option value="GET">GET</option>
+                        <option data-testid="GET" value="GET">GET</option>
                         <option value="POST">POST</option>
                         <option value="PUT">PUT</option>
                         <option value="DELETE">DELETE</option>
                     </select>
                 </label>
                 <label >
-                    <input name='url' type='text' required placeholder='URL'/>
+                    <input data-testid='input' name='url' type='text' required placeholder='URL'/>
                 </label>
-                <button type="submit">GO!</button>
+                <button data-testid='btn'type="submit">GO!</button>
             </form>
             {body
                 ? <div id='text-body'>
