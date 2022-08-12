@@ -30,7 +30,19 @@ Students will be creating and styling a Counter application. Look for the follow
 
 - The first and most important part of the lab assignment is to draw a process diagram of the starter code and state as events happen. Once the students understand that, they can move on.
 
+### Setup
 
+```js
+git clone 
+cd resty
+npm install
+```
+
+### initialize
+
+```js
+npm start
+```
 ## UML Diagram :
 
 <br>
