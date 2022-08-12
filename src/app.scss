@@ -22,12 +22,12 @@ body {
     display: flex;
     margin-top: 24px;
     padding-left: 14px;
-
+    font-size: 1rem;
     #method {
       display: flex;
-      background-color: aqua;
       width: 100%;
       flex: 40%;
+      margin: 9px 19px;
 
       div:nth-child(1) {
         background-color: blue;
@@ -39,10 +39,13 @@ body {
         text-align: center;
         padding-top: 6px;
       }
-      div:nth-child(1):hover{
-        background-color: white;
-        color: black;
+
+      div:nth-child(2) {
+        padding: 2px 6px;
       }
+    }
+    section{
+      flex:130%;
     }
   }
 
