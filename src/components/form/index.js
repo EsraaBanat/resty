@@ -4,44 +4,41 @@ import './form.scss';
 
 function Form(props) {
 
-  const [body, setBody] = useState(false);
+    const [body,
+        setBody] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const formData = {
-            method: e.target[1].value,
-            url: e.target[0].value
+            method: e.target[0].value,
+            url: e.target[1].value
         };
-      // console.log(e.target[2].value); 
-      // console.log(e);
-      props.handleApiCall(formData);
-      let url = 'https://reqres.in/api/posts';
-      let response = await fetch(url,{
+        // console.log(e.target[2].value); console.log('EEEEEEEE',e);
+        props.handleApiCall(formData);
+        let url = 'https://reqres.in/api/posts';
+        let response = await fetch(url, {
             method: formData.method,
-            headers:  {
-                    "access-control-allow-origin": "*",
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-      })
-      let data = await response.json();
-      props.setResult(data);
-      console.log(data);
+            headers: {
+                "access-control-allow-origin": "*",
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        let data = await response.json();
+        props.setResult(data);
+        console.log(data);
         // e.target[0].value = null;
     }
-  
+
     const textArea = (e) => {
         e.target.value == 'POST' || e.target.value == 'PUT'
             ? setBody(true)
             : setBody(false);
         // console.log(body);
     };
-  
+
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <label >
-                    <input name='url' type='text' required placeholder='URL'/>
-                </label>
                 <label className="methods">
                     <select onChange={textArea} id="methods">
                         <option value="GET">GET</option>
@@ -50,15 +47,19 @@ function Form(props) {
                         <option value="DELETE">DELETE</option>
                     </select>
                 </label>
-                {body
-                    ? <label >
-                            <span>
-                                Body</span>
-                            <textarea></textarea>
-                        </label>
-                    : null}
+                <label >
+                    <input name='url' type='text' required placeholder='URL'/>
+                </label>
                 <button type="submit">GO!</button>
             </form>
+            {body
+                ? <div id='text-body'>
+                        <span>
+                            Body</span>
+                        <textarea></textarea>
+                    </div>
+
+                : null}
         </>
     );
 }
