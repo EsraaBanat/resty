@@ -23,7 +23,7 @@ function App() {
         if (data.requestParams.method == 'GET') {
             axios.get(data.requestParams.url)
             .then(res => {
-                setResult(res.data.results);
+                setResult(res);
           }).catch((e) => {
               console.log(e);
               setResult({stauts:"Sorry Something went wrong"})
