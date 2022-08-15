@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 
 import './app.scss';
 
@@ -15,27 +16,58 @@ function App() {
         setData] = useState({data: null, requestParams: {}})
 
     const [result,
-        setResult] = useState()
+        setResult] = useState({})
+        // console.log('kkkkkkkkkkk',result);
+    
+    useEffect(() => {
+        if (data.requestParams.method == 'GET') {
+            axios.get(data.requestParams.url)
+            .then(res => {
+                setResult(res.data.results);
+          }).catch((e) => {
+              console.log(e);
+              setResult({stauts:"Sorry Something went wrong"})
+          });
+        }
+        if (data.requestParams.method == 'POST') {
+                axios.post(data.requestParams.url,data.requestParams.body)
+                .then(res => {
+                    // console.log('rrrrrrrr',res);
+                    setResult(res);
+              }).catch((e) => {
+                  console.log(e);
+                  setResult({stauts:"Sorry Something went wrong"})
+              });
+        }
+        if (data.requestParams.method == 'PUT') {
+                axios.post(data.requestParams.url,data.requestParams.body)
+                .then(res => {
+                    // console.log('rrrrrrrr',res);
+                    setResult(res);
+              }).catch((e) => {
+                  console.log(e);
+                  setResult({stauts:"Sorry Something went wrong"})
+              });
+        }
+        if (data.requestParams.method == 'DELETE') {
+                axios.post(data.requestParams.url)
+                .then(res => {
+                    // console.log('rrrrrrrr',res);
+                    setResult({stauts:"Deleted Successfuly"});
+              }).catch((e) => {
+                  console.log(e);
+                  setResult({stauts:"Sorry Something went wrong"})
+              });
+        }
+    },[data])
 
-    function callApi(requestParams) {
-        // mock output
-        const data = {
-            count: 2,
-            results: [
-                {
-                    name: 'fake thing 1',
-                    url: 'http://fakethings.com/1'
-                }, {
-                    name: 'fake thing 2',
-                    url: 'http://fakethings.com/2'
-                }
-            ]
-        };
+    function callApi(formData) {
         setData({
             ...data,
-            data,
-            requestParams
+            data:result,
+            requestParams:formData
         })
+        console.log('TTT',result);
     }
     // console.log(result);
 
