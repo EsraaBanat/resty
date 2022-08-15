@@ -49,6 +49,11 @@ npm start
 
 ![](./Resty_UML.jpg)
 
+## NOTE : Please use this url for testing 
+```
+url : https://reqres.in/api/posts
+```
+
 ## [Code Sandbox Link Lab 26](https://codesandbox.io/s/summer-silence-dnfdpo?file=/src/app.js)
 
 ## [Code Sandbox Link Lab 27](https://codesandbox.io/s/heuristic-mccarthy-tfk1qu)

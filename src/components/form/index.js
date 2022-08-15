@@ -1,34 +1,28 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
 
 import './form.scss';
 
 function Form(props) {
 
-    const [body,
-        setBody] = useState(false);
+    const [body,setBody] = useState(false);
+    const [postData,setPostData] = useState('');
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         const formData = {
             method: e.target[0].value,
-            url: e.target[1].value
+            url: e.target[1].value,
+            body:postData
         };
-        // console.log(e.target[2].value); console.log('EEEEEEEE',e);
+        console.log(formData); 
         props.handleApiCall(formData);
-        let url = 'https://reqres.in/api/posts';
-        let response = await fetch(url, {
-            method: formData.method,
-            headers: {
-                "access-control-allow-origin": "*",
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-        let data = await response.json();
-        props.setResult(data);
-        console.log(data);
-        // e.target[0].value = null;
     }
-
+    const sendBody = (e) => {
+        let body = document.getElementById("body").value;
+        // console.log({body});
+        setPostData(body);
+    }
     const textArea = (e) => {
         e.target.value == 'POST' || e.target.value == 'PUT'
             ? setBody(true)
@@ -56,7 +50,7 @@ function Form(props) {
                 ? <div id='text-body'>
                         <span>
                             Body</span>
-                        <textarea></textarea>
+                        <textarea id='body' onInput={sendBody}></textarea>
                     </div>
 
                 : null}
